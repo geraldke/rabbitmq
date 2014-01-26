@@ -28,10 +28,11 @@ class Consumer:
         self.channel.queue_bind(exchange=self.exchange_name,
                                 queue=queue,
                                 routing_key=routing_key)
-        self.channel.basic_consume(self.callback, queue=queue, no_ack=True)
+        self.channel.basic_consume(self.callback, queue=queue)
         self.channel.start_consuming()
 
     def callback(self, ch, method, properties, body):
+        ch.basic_ack(delivery_tag = method.delivery_tag)
         print "Message received: %r" % body
 
     def __connect(self):

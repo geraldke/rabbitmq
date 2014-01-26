@@ -5,3 +5,4 @@ sudo dpkg -i rabbitmq-server_3.2.3-1_all.deb
 sudo rabbitmqctl delete_user guest
 sudo rabbitmqctl add_user bunny ilovecarrots
 sudo rabbitmqctl set_permissions bunny '.*' '.*' '.*'
+sudo rabbitmqctl set_user_tags bunny administrator
